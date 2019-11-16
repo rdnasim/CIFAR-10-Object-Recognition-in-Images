@@ -30,5 +30,3 @@ def submission_path():
 
 def output_path():
     return os.path.join(root_path(), "output")
-
-print(checkpoint_path())
