@@ -22,3 +22,19 @@ print("train data label: ", y_train.shape)
 model = my_model.get_model()
 
 #compile
+model.compile(keras.optimizers.Adam(config.lr),
+                keras.losses.categorical_crossentropy,
+                metrics=['accuracy'])
+
+#checkpoint
+model_cp = my_model.save_model_checkpoint()
+early_stoping = my_model.set_early_stoping()
+
+#for training model
+model.fit(x_train, y_train, 
+            batch_size = config.batch_size, 
+            epochs=config.nb_epoch, 
+            verbose = 2,
+            shuffle = True,
+            callbacks = [early_stoping, model_cp], 
+            validation_split = 0.2)
