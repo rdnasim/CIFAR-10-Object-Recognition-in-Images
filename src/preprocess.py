@@ -78,7 +78,7 @@ def load_test_data():
     #print(test_images)
     start = 0
     nb_images = 50000
-    for part in range(0, 1):
+    for part in range(0, 6):
         if not  (part == 0): start += nb_images
         end = start + nb_images
 
@@ -97,7 +97,7 @@ def load_test_data():
         
 
         np.save(os.path.join(config.output_path(),
-                            "x_test_" + str(part)), x_test)
+                            "x_test" + str(part)), x_test)
         del x_test
 
 
@@ -105,9 +105,9 @@ def load_test_data():
 def get_test_data_by_part(part):
     print("Loading test image part ", part, " from numpy array")
     return np.load(os.path.join(config.output_path(),
-                    "x_test_" + str(part) + ".npy"))
+                    "x_test" + str(part) + ".npy"))
 
 if __name__ == "__main__":
-    load_train_data()
+    load_test_data()
 
 
